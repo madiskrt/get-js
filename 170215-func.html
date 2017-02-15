@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><title></title></head><body>
+
+<img src="img/sale.jpg" width="700">
+
+<script>
+	
+var sayHello;
+
+sayHello = function(){
+	console.log("Hello World!");
+}
+
+sayHello();
+
+var sale1;
+var sale; //variable to be used by the functions
+var calculateTax;
+var displaySale;
+
+sale1 = { price: 140, taxRate: 15 };
+
+calculateTax = function(){
+	sale.tax = sale.price * sale.taxRate / 100;
+	sale.total = sale.price + sale.tax;
+}
+
+var displaySale = function(){
+	console.log("price = $" + sale.price);
+	console.log("tax @ " + sale.taxRate + "% = $" + sale.tax);
+	console.log("total cost = $" + sale.total);
+}
+
+sale = sale1;
+calculateTax();
+displaySale();
+
+
+</script>
+</body></html>

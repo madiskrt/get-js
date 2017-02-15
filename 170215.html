@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title></title></head><body>
+
+
+<script>
+	
+var book;
+var bookName;
+
+bookName = "Kevade";
+
+book = {
+	title: bookName
+}
+
+book.author = "Oskar Luts";
+book["isbn"] = 12345678;
+
+console.log(book);
+console.log(book.title);
+console.log('Raamatu "' + book.title + '" on kirjutanud kirjanik ' + book.author);
+
+var player1;
+
+player1 = {
+	name: "Madis",
+	score: 0
+}
+
+player1.score += 50;
+//When you update the score property (in bold in the listing), JavaScript evaluates the right side of the assignment first.
+
+console.log(player1.score);
+
+
+</script>
+</body></html>
