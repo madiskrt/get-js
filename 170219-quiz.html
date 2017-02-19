@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><title></title></head><body>
+
+
+<script>
+
+var QuizQuestion = function (question, answer) {
+	this.question = question;
+	this.answer = answer;
+	this.options = [];
+
+	this.addOption = function (option) {
+	this.options.push(option);
+	};
+
+	this.showQuestion = function () {
+		console.log(this.question);
+		//The forEach method passes each option and its index to a function that displays the option along with an option number.
+		this.options.forEach(function (option, i) {
+			console.log("(" + (i + 1) + ") " + option);
+		});
+	};
+};
+
+var question1 = new QuizQuestion("What is the capital of France?", "Paris");
+
+question1.addOption("Bordeaux");
+question1.addOption("F");
+question1.addOption("Paris");
+question1.addOption("Brussels");
+
+question1.showQuestion();
+
+</script>
+
+</body></html>

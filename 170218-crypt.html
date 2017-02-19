@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head><title></title></head><body>
+
+
+<script>
+	
+playerName = "Madis";
+playerHealth = 50;
+playerPlace = "The Dungeon of Doom";
+playerItems = "a rusty key, The Sword of Destiny, a piece of cheese";
+
+var player1;
+var player2;
+var player;
+var showPlayerInfo;
+var showPlayerName;
+var getPlayerInfo;
+
+player1 = {
+	//for each property we use a key-value pair
+	name: "Kandra",
+	health: 50,
+	place: "The Dungeon of Doom",
+	items: "a rusty key, The Sword of Destiny, a piece of cheese"
+};
+
+player2 = {
+	name : "Madis",
+	place: "The Old Library",
+	health: 40
+}
+
+spacer = {
+	//Functions set as properties of an object are called methods
+	blank: function(){
+		return "";
+	},
+
+	newLine: function(){
+		return "\n";
+	},
+
+	line: function (length, character) {
+	var longString =
+	"****************************************";
+	longString += "----------------------------------------";
+	longString += "========================================";
+	longString += "++++++++++++++++++++++++++++++++++++++++";
+	longString += " ";
+	length = Math.max(0, length);
+	length = Math.min(40, length);
+	return longString.substr(longString.indexOf(character), length);
+	},
+
+	wrap : function (text, length, character) {
+	var padLength = length - text.length - 3;
+	var wrapText = character + " " + text;
+	wrapText += spacer.line(padLength, " ");
+	wrapText += character;
+	return wrapText;
+	},
+
+	box: function (text, length, character) {
+	var boxText = spacer.newLine();
+	boxText += spacer.line(length, character) + spacer.newLine();
+	boxText += spacer.wrap(text, length, character) + spacer.newLine();
+	boxText += spacer.line(length, character) + spacer.newLine();
+	return boxText;
+	}
+
+}
+
+getPlayerName = function(player){
+	return player.name;
+}
+
+getPlayerHealth = function (player) {
+	return player.name + " has health " + player.health;
+};
+
+getPlayerPlace = function (player) {
+	return player.name + " is in " + player.place;
+};
+
+getPlayerInfo = function(player, character){
+	
+	var place = getPlayerPlace(player);
+	var health = getPlayerHealth(player);
+	var longest = Math.max(place.length, health.length) + 4;
+	var info = spacer.box(getPlayerName(player), longest, character);
+	info += spacer.wrap(place, longest, character);
+	info += spacer.newLine() + spacer.wrap(health, longest, character);
+	info += spacer.newLine() + spacer.line(longest, character);
+	info += spacer.newLine();
+	return info;
+
+}
+
+player = player1;
+//showPlayerInfo();
+
+player = player2;
+//showPlayerInfo();
+
+console.log(getPlayerInfo(player1, "="));
+console.log(getPlayerInfo(player2, "+"));
+
+</script>
+</body></html>

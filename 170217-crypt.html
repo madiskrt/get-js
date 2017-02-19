@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><title></title></head><body>
+<img src="img/170217-crypt.jpg">
+
+<script>
+	
+playerName = "Madis";
+playerHealth = 50;
+playerPlace = "The Dungeon of Doom";
+playerItems = "a rusty key, The Sword of Destiny, a piece of cheese";
+
+var player1;
+var player2;
+var player;
+var showPlayerInfo;
+var showPlayerName;
+var getPlayerInfo;
+
+player1 = {
+	//for each property we use a key-value pair
+	name: "Kandra",
+	health: 50,
+	place: "The Dungeon of Doom",
+	items: "a rusty key, The Sword of Destiny, a piece of cheese"
+};
+
+player2 = {
+	name : "Madis",
+	place: "The Old Library",
+	health: 40
+}
+
+getPlayerName = function(playerName){
+	return playerName;
+}
+
+getPlayerHealth = function (playerName, playerHealth) {
+	return playerName + " has health " + playerHealth;
+};
+
+getPlayerPlace = function (playerName, playerPlace) {
+	return playerName + " is in " + playerPlace;
+};
+
+getPlayerInfo = function(playerName, playerPlace, playerHealth){
+	var playerInfo;
+
+	playerInfo = "\n" + getPlayerName(playerName);
+	playerInfo += "\n" + getPlayerPlace(playerName, playerPlace);
+	playerInfo += "\n" + getPlayerHealth(playerName, playerHealth);
+
+	return playerInfo;
+}
+
+player = player1;
+//showPlayerInfo();
+
+player = player2;
+//showPlayerInfo();
+
+console.log(getPlayerInfo(player1.name, player1.place, player1.health));
+console.log(getPlayerInfo(player2.name, player2.place, player2.health));
+
+</script>
+</body></html>
