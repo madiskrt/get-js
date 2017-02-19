@@ -3,125 +3,34 @@
 
 <script>
 	
-playerName = "Madis";
-playerHealth = 50;
-playerPlace = "The Dungeon of Doom";
-playerItems = "a rusty key, The Sword of Destiny, a piece of cheese";
+var CalendarEvent = function (title, startDate, startTime, endTime) {
+	this.title = title;
+	this.startDate = startDate;
+	this.startTime = startTime;
+	this.endTime = endTime;
 
-var player1;
-var player2;
-var player;
-var showPlayerInfo;
-var showPlayerName;
-var getPlayerInfo;
+	this.showEvent = function () {
+		var dateString = [
+			this.startDate,
+			", from ",
+			this.startTime,
+			" to ",
+			this.endTime
+		].join("");
 
-player1 = {
-	//for each property we use a key-value pair
-	name: "Kandra",
-	health: 50,
-	place: "The Dungeon of Doom",
-	items: ["a rusty key", "sword", "lamp"]
+		console.log(this.title);
+		console.log(dateString);
+	};
 };
 
-player2 = {
-	name : "Madis",
-	place: "The Old Library",
-	health: 40,
-	items: ["a rusty key"]
-}
+var calEvent = new CalendarEvent(
+	"Annual Review",
+	"3/5/16",
+	"4.00pm",
+	"5.00pm"
+);
 
-spacer = {
-	//Functions set as properties of an object are called methods
-	blank: function(){
-		return "";
-	},
-
-	newLine: function(){
-		return "\n";
-	},
-
-	line: function (length, character) {
-	var longString =
-	"****************************************";
-	longString += "----------------------------------------";
-	longString += "========================================";
-	longString += "++++++++++++++++++++++++++++++++++++++++";
-	longString += " ";
-	length = Math.max(0, length);
-	length = Math.min(40, length);
-	return longString.substr(longString.indexOf(character), length);
-	},
-
-	wrap : function (text, length, character) {
-	var padLength = length - text.length - 3;
-	var wrapText = character + " " + text;
-	wrapText += spacer.line(padLength, " ");
-	wrapText += character;
-	return wrapText;
-	},
-
-	box: function (text, length, character) {
-	var boxText = spacer.newLine();
-	boxText += spacer.line(length, character) + spacer.newLine();
-	boxText += spacer.wrap(text, length, character) + spacer.newLine();
-	boxText += spacer.line(length, character) + spacer.newLine();
-	return boxText;
-	}
-
-}
-
-getPlayerName = function(player){
-	return player.name;
-}
-
-getPlayerHealth = function (player) {
-	return player.name + " has health " + player.health;
-};
-
-getPlayerPlace = function (player) {
-	return player.name + " is in " + player.place;
-};
-
-var getPlayerItems = function (player) {
-	var itemsString = "Items:" + spacer.newLine();
-
-	player.items.forEach(function (item) {
-	itemsString += " - " + item + spacer.newLine();
-	});
-
-	return itemsString;
-};
-
-getPlayerInfo = function(player, character){
-	
-	var place = getPlayerPlace(player);
-	var health = getPlayerHealth(player);
-	var longest = Math.max(place.length, health.length) + 4;
-	var info = spacer.box(getPlayerName(player), longest, character);
-	info += spacer.wrap(place, longest, character);
-	info += spacer.newLine() + spacer.wrap(health, longest, character);
-	info += spacer.newLine() + spacer.line(longest, character);
-
-	info += spacer.newLine();
-	info += " " + getPlayerItems(player);
-	info += spacer.newLine();
-	info += spacer.line(longest, character);
-
-	//info += spacer.newLine();
-	return info;
-
-}
-
-player = player1;
-//showPlayerInfo();
-
-player = player2;
-//showPlayerInfo();
-
-player2.items.push("a medallion");
-
-console.log(getPlayerInfo(player1, "="));
-console.log(getPlayerInfo(player2, "+"));
+calEvent.showEvent();
 
 </script>
 </body></html>
